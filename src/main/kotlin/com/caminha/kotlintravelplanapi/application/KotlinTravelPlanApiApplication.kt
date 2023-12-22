@@ -11,5 +11,4 @@ fun main(args: Array<String>) {
 }
 
 
-//example of an extention function
-fun KotlinTravelPlanApiApplication.getClassName(): String {return KotlinTravelPlanApiApplication::getClassName.name}
+

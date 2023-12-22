@@ -22,6 +22,18 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+	implementation("com.google.cloud:spring-cloud-gcp-starter")
+
+	implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
+
+	/* database dependencies */
+	implementation("com.google.cloud:cloud-spanner-spring-data-r2dbc:1.2.2")
+	implementation("org.apache.commons:commons-dbcp2:2.9.0")
+	implementation("io.r2dbc:r2dbc-spi:0.9.0.RELEASE")
+	implementation("org.springframework:spring-jdbc")
+
+
 }
 
 tasks.withType<KotlinCompile> {
