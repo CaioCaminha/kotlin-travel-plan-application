@@ -1,5 +1,5 @@
 package com.caminha.kotlintravelplanapi.domain.enum
 
-enum class VisitationPlaces {
+enum class DestinationCategories {
     HISTORICAL, ART, CULTURE, NATURE, ENTERTAINMENT, RESTAURANTS,SHOPPING,SPORTS
 }
