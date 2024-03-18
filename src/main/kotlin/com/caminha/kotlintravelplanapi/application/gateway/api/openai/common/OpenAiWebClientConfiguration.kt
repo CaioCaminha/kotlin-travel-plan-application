@@ -1,4 +1,4 @@
-package com.caminha.kotlintravelplanapi.application.gateway.api
+package com.caminha.kotlintravelplanapi.application.gateway.api.openai.common
 
 import com.caminha.kotlintravelplanapi.application.configuration.api.WebClientBuilder
 import org.springframework.beans.factory.annotation.Value
@@ -11,7 +11,7 @@ import org.springframework.web.service.invoker.HttpServiceProxyFactory
 @Configuration
 class OpenAiWebClientConfiguration {
 
-    @Value("\${openai-secret-api-key}")
+    @Value("\${openai-base-url}")
     lateinit var openaiApi: String
 
     @Value("\${https_proxyHost}")
@@ -33,7 +33,4 @@ class OpenAiWebClientConfiguration {
                 .build()
         return httpServiceProxyFactory.createClient(OpenAiHttpClient::class.java)
     }
-
-
-
 }
