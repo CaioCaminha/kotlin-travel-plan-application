@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	id("org.springframework.boot") version "3.1.4"
 	id("io.spring.dependency-management") version "1.1.0"
-	id("org.graalvm.buildtools.native").version("0.9.24")
+	id("org.graalvm.buildtools.native") version("0.9.24")
 	kotlin("jvm") version "1.8.22"
 	kotlin("plugin.spring") version "1.8.22"
 	jacoco
@@ -51,8 +51,10 @@ dependencies {
 
 	/*R2DBC Dependencies*/
 	implementation("io.r2dbc:r2dbc-spi:1.0.0.RELEASE")
-	implementation("org.springframework.data:spring-data-r2dbc:3.2.3")
-	implementation("com.google.cloud:spring-cloud-gcp-starter-sql-postgres-r2dbc")
+	implementation("org.springframework.data:spring-data-r2dbc")
+	implementation("com.google.cloud:spring-cloud-spanner-spring-data-r2dbc:5.0.0")
+	implementation("com.google.cloud:cloud-spanner-r2dbc:1.3.0")
+	implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
 	/*R2DBC Dependencies*/
 
 	/*GCP Common Dependencies*/
@@ -62,6 +64,7 @@ dependencies {
 	/*GCP Common Dependencies*/
 
 	implementation("org.springframework.boot:spring-boot-starter")
+	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")

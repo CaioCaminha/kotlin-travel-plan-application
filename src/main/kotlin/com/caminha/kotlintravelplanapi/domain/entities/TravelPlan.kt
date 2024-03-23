@@ -1,25 +1,14 @@
 package com.caminha.kotlintravelplanapi.domain.entities
 
-import com.caminha.kotlintravelplanapi.application.controller.dto.TravelPlanRequestDto
 import com.caminha.kotlintravelplanapi.domain.enum.Budget
-import com.caminha.kotlintravelplanapi.domain.enum.DestinationCategories
-import com.caminha.kotlintravelplanapi.domain.enum.DestinationRate
-import java.time.Instant
+import com.caminha.kotlintravelplanapi.domain.enum.DestinationCategory
+import com.caminha.kotlintravelplanapi.domain.enum.CategoryRating
+import java.util.Date
 
 data class TravelPlan(
     val destination: String,
-    val startDate: Instant,
-    val endDate: Instant,
-    val preferences: Set<Pair<DestinationCategories, DestinationRate>>,
+    val startDate: Date,
+    val endDate: Date,
+    val preferences: Set<Pair<DestinationCategory, CategoryRating>>,
     val budget: Budget,
-)
-
-
-//extension function
-fun TravelPlanRequestDto.toDomain() = TravelPlan(
-    destination = destination,
-    startDate = startDate,
-    endDate = endDate,
-    preferences = preferences,
-    budget = budget,
 )

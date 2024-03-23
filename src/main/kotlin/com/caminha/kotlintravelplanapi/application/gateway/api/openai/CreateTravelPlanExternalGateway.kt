@@ -5,10 +5,8 @@ import com.caminha.kotlintravelplanapi.application.gateway.api.openai.dto.Messag
 import com.caminha.kotlintravelplanapi.application.gateway.api.openai.dto.OpenAiRequestDto
 import com.caminha.kotlintravelplanapi.application.gateway.api.openai.dto.OpenAiResponseDto
 import com.caminha.kotlintravelplanapi.domain.entities.TravelPlan
-import com.caminha.kotlintravelplanapi.domain.enum.DestinationCategories
-import com.caminha.kotlintravelplanapi.domain.enum.DestinationRate
+import com.caminha.kotlintravelplanapi.domain.enum.CategoryRating
 import com.caminha.kotlintravelplanapi.domain.ports.CreateTravelPlanExternalPort
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.reactor.awaitSingle
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
@@ -35,7 +33,7 @@ class CreateTravelPlanExternalGateway(
 private fun generatePrompt(travelPlan: TravelPlan): MessageDto {
 
     val categoriesList = travelPlan.preferences.map {
-        if(it.second == DestinationRate.VERY_LIKELY || it.second == DestinationRate.LIKELY){
+        if(it.second == CategoryRating.VERY_LIKELY || it.second == CategoryRating.LIKELY){
             it.first
         }
     }
