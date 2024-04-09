@@ -9,6 +9,7 @@ data class TravelPlan(
     val destination: String,
     val startDate: Date,
     val endDate: Date,
-    val preferences: Set<Pair<DestinationCategory, CategoryRating>>,
+    val preferences: List<Pair<DestinationCategory, CategoryRating>>,
     val budget: Budget,
+    var externalTravelPlanning: String? = null,
 )

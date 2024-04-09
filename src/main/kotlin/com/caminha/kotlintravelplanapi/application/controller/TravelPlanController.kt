@@ -1,6 +1,8 @@
 package com.caminha.kotlintravelplanapi.application.controller
 
 import com.caminha.kotlintravelplanapi.application.controller.dto.TravelPlanRequestDto
+import com.caminha.kotlintravelplanapi.application.controller.dto.TravelPlanResponseDto
+import com.caminha.kotlintravelplanapi.application.controller.dto.toResponseDto
 import com.caminha.kotlintravelplanapi.usecase.CreateTravelPlanUseCase
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.module.kotlin.KotlinModule
@@ -27,24 +29,13 @@ class TravelPlanController(
     @PostMapping
     suspend fun createPlan(
         @RequestBody requestModel: String,
-    ) = coroutineScope {
+    ): TravelPlanResponseDto = coroutineScope {
 
-        // TravelPlanRequestDto::class it's a reflection call - Study reflection
         val request = mapper.readValue(requestModel, TravelPlanRequestDto::class.java)
 
-
-
-
-
+        createTravelPlanUseCase
+            .execute(request.toDomain())
+            .toResponseDto()
     }
-
-
-    // reflection use example...
-    /*val numbers = listOf(1, 2, 3)
-
-    println(numbers.filter(::isOdd))
-    fun isOdd(num: Int) = num % 2 != 0*/
-
-
 
 }

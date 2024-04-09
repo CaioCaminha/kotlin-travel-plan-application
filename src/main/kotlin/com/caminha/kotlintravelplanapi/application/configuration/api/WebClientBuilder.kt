@@ -65,6 +65,13 @@ object WebClientBuilder {
 
     }
 
+    //TODO(Implement logRequest to obtain information about webclient requests)
+//    private fun logRequest() = WebClientExchangeFilters.filter { clientRequest, clientResponse ->
+//        with(clientRequest) {
+//
+//        }
+//    }
+
     private fun logResponse() = WebClientExchangeFilters.filter { clientRequest, clientResponse ->
         with(clientResponse) {
             val statusCode = statusCode()

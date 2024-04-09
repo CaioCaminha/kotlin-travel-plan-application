@@ -13,7 +13,7 @@ interface OpenAiHttpClient {
 
     @PostExchange("/chat/completions")
     fun chatCompletion(
-        @RequestHeader("Authorization") token: String,
+        @RequestHeader(name = "Authorization") token: String,
         @RequestBody body: OpenAiRequestDto,
     ): Mono<OpenAiResponseDto>
 }

@@ -7,4 +7,6 @@ interface DestinationPreferencesPort {
 
     fun findAllByTravelPlanId(travelPlanId: String): Flow<DestinationPreferences>
 
+    suspend fun save(destinationPreferences: DestinationPreferences): DestinationPreferences?
+
 }

@@ -1,6 +1,7 @@
 package com.caminha.kotlintravelplanapi.application.gateway.r2dbc.entities
 
 import com.caminha.kotlintravelplanapi.application.gateway.r2dbc.common.PersistableEntity
+import com.caminha.kotlintravelplanapi.domain.entities.DestinationPreferences
 import com.caminha.kotlintravelplanapi.domain.enum.DestinationCategory
 import com.caminha.kotlintravelplanapi.domain.enum.CategoryRating
 import com.google.cloud.Timestamp
@@ -16,7 +17,7 @@ data class DestinationPreferencesEntity
 constructor(
     @Id
     @Column("id")
-    val id: String = UUID.randomUUID().toString(),
+    private val id: String = UUID.randomUUID().toString(),
     @Column("travel_plan_id")
     val travelPlanId: String,
     @Column("destination_category")
@@ -24,15 +25,28 @@ constructor(
     @Column("category_rating")
     val categoryRating: CategoryRating,
     @Column("created_at")
-    override val createdAt: Timestamp,
+    override val createdAt: Timestamp = Timestamp.now(),
     @Column("updated_at")
-    override var updatedAt: Timestamp,
+    override var updatedAt: Timestamp = createdAt,
 ): PersistableEntity<String> {
     override fun getId(): String {
         return id
     }
 
-
-
+    fun toDomain() = DestinationPreferences(
+        id = UUID.fromString(id),
+        travelPlanId = travelPlanId,
+        destinationCategory = destinationCategory,
+        categoryRating = categoryRating,
+    )
 
 }
+
+fun DestinationPreferences.toEntity() = DestinationPreferencesEntity(
+    id = id.toString(),
+    travelPlanId = travelPlanId,
+    destinationCategory = destinationCategory,
+    categoryRating = categoryRating,
+    createdAt = Timestamp.now(),
+    updatedAt = Timestamp.now(),
+)

@@ -7,6 +7,7 @@ import com.caminha.kotlintravelplanapi.application.gateway.api.openai.dto.OpenAi
 import com.caminha.kotlintravelplanapi.domain.entities.TravelPlan
 import com.caminha.kotlintravelplanapi.domain.enum.CategoryRating
 import com.caminha.kotlintravelplanapi.domain.ports.CreateTravelPlanExternalPort
+import com.caminha.kotlintravelplanapi.utils.logInfo
 import kotlinx.coroutines.reactor.awaitSingle
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
@@ -18,6 +19,7 @@ class CreateTravelPlanExternalGateway(
     private val openAiToken: String,
 ): CreateTravelPlanExternalPort {
     override suspend fun createTravelPlan(travelPlan: TravelPlan): OpenAiResponseDto {
+        logInfo(openAiToken)
         return openAiHttpClient.chatCompletion(
             openAiToken,
             OpenAiRequestDto(

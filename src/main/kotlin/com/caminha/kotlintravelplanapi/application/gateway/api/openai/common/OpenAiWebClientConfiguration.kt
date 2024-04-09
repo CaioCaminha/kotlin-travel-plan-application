@@ -1,6 +1,7 @@
 package com.caminha.kotlintravelplanapi.application.gateway.api.openai.common
 
 import com.caminha.kotlintravelplanapi.application.configuration.api.WebClientBuilder
+import com.caminha.kotlintravelplanapi.utils.logInfo
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
